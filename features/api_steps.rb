@@ -1,3 +1,5 @@
+thing_url = 'http://localhost:8080/thing/'
+
 Transform /^(-?\d+)$/ do |number|
   number.to_i
 end
@@ -67,5 +69,20 @@ end
 
 Given /^I have a valid OAth token$/ do
   page.driver.header('Auth', "mytoken")
-#  pending # express the regexp above with the code you wish you had
+end
+
+When /^I PUT a thing with a title of "(.*?)"$/ do |arg1|
+  visit(thing_url, 'post','{"thing":{"title":"arg1goeshere"}}')
+end
+
+Given /^that I store a thing just now$/ do
+  pending # express the regexp above with the code you wish you had
+end
+
+When /^I GET my things$/ do
+  pending # express the regexp above with the code you wish you had
+end
+
+Then /^I the API should return a thing with a title of "(.*?)"$/ do |arg1|
+  pending # express the regexp above with the code you wish you had
 end

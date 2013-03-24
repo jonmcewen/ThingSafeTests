@@ -14,4 +14,13 @@ Feature: API
                  | check     | result |
 		 | deadlocks | OK     |
 		 | template  | OK     |
-	
+
+	Scenario: Store a thing
+		Given that ThingSafe is up
+		When I PUT a thing with a title of "MyThing"
+		Then the response code should be 200
+
+	Scenario: Retrieve a thing
+		Given that I store a thing just now
+		When I GET my things
+		Then I the API should return a thing with a title of "MyThing"	
