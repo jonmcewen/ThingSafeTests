@@ -24,12 +24,12 @@ def backdoor_get (path)
 end
 
 def get(path)
-  page.driver.header('Accept',       "application/json")
+  page.driver.header('Accept', "application/json")
   visit(path)
 end
 
 def backdoor_auth
-  page.driver.header('oauth_token',       "letmein")
+  page.driver.header('Authorization', 'OAuth oauth_token="letmein"')
 end
 
 Given /^that ThingSafe is up$/ do
