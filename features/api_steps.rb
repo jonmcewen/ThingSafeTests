@@ -1,5 +1,9 @@
-thing_url = 'http://localhost:8080/thing/'
+require "json_spec/cucumber"
 
+thing_url = 'http://localhost:8080/thing/'
+def last_json
+  page.source
+end
 Transform /^(-?\d+)$/ do |number|
   number.to_i
 end

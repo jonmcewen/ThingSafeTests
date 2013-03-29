@@ -1,4 +1,5 @@
 require 'rubygems'
+require 'bundler/setup'
 require 'cucumber'
 require 'cucumber/rake/task'
 
