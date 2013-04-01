@@ -1,27 +1,9 @@
 require "json_spec/cucumber"
 
-thing_url = 'http://localhost:8080/thing/'
-def last_json
-  page.source
-end
+thing_url = 'http://localhost:8080/mythings/'
+
 Transform /^(-?\d+)$/ do |number|
   number.to_i
-end
-
-def decode_api_response_as(model_name, format)
-  if format == 'JSON'
-    decoded = ActiveSupport::JSON.decode(response.body)
-    if decoded.is_a?(Array)
-      decoded.map { |inst| inst[model_name] }
-    else
-      decoded[model_name]
-    end
-  elsif format == 'XML'
-    decoded = Hash.from_xml(response.body)
-    decoded[model_name] || decoded[model_name.pluralize]
-  else
-    raise "Unsopported response format: #{format}"
-  end
 end
 
 def backdoor_get (path)
@@ -75,18 +57,3 @@ Given /^I have a valid OAth token$/ do
   page.driver.header('Auth', "mytoken")
 end
 
-When /^I PUT a thing with a title of "(.*?)"$/ do |arg1|
-  visit(thing_url, 'post','{"thing":{"title":"arg1goeshere"}}')
-end
-
-Given /^that I store a thing just now$/ do
-  pending # express the regexp above with the code you wish you had
-end
-
-When /^I GET my things$/ do
-  pending # express the regexp above with the code you wish you had
-end
-
-Then /^I the API should return a thing with a title of "(.*?)"$/ do |arg1|
-  pending # express the regexp above with the code you wish you had
-end
