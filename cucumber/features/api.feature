@@ -13,7 +13,7 @@ Feature: API
 		And I should see the following results
                  | check     | result |
 		 | deadlocks | OK     |
-		 | template  | OK     |
+		 | repo      | OK     |
 
 	Scenario: Store a thing
 		Given that ThingSafe is up
