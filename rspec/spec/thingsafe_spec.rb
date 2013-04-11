@@ -16,7 +16,7 @@ describe "ThingSafe" do
     response = HTTParty.get(url_base + "mythings", :headers => headers)
 
     response.code.should eq(200)
-    response.body.should eq([{:name => "My Thing", :user => "testuser" }].to_json)
+    response.body.should eq([{:user => "testuser", :name => "My Thing"}].to_json)
   end
 end
 
